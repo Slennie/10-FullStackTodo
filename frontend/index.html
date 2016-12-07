@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="" ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TODO!</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container" ng-controller="HomeController as home">
+        <h1 class="text-center">TODO List!</h1>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                What needs to be done?
+            </div>
+            <div class="panel-body">
+                <textarea name="" ng-model="home.newPost" id="" cols="30" rows="1" class="form-control"></textarea>
+            </div>
+            <div class="panel-footer clearfix">
+                <button class="btn btn-primary pull-right" ng-click="home.addPost()">Add to list!</button>
+                <select name="" id="" ng-model="home.newClass">
+                    <option value="">priority</option>
+                    <option value= 3 >low</option>
+                    <option value= 2 >medium</option>
+                    <option value= 1 >high</option>
+                </select>
+            </div>
+        </div>
+        <ul>
+        <button ng-click= "home.order = 'priority'" class="btn btn-primary">Order by highest priority</button>
+        <button ng-click= "home.order = '-priority'" class="btn btn-primary">Order by lowest priority</button>
+        <button ng-click= "home.order = 'text'" class="btn btn-primary">Order alphabetically</button>
+            <li ng-repeat="post in home.posts | orderBy: home.order" ng-class="home.getColor(post)">
+                <div class="list-group-item" ng-class="home.getColor(post)">
+                    {{post.text}}
+                    <button class="btn btn-xs btn-danger pull-right" ng-click="home.deletePost(post)">x</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/todo.factory.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+<!--<option value="">priority</option>
+                    <option value="list-group-item-success">low</option>
+                    <option value="list-group-item-warning">medium</option>
+                    <option value="list-group-item-danger">high</option>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
